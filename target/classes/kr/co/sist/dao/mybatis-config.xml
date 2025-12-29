@@ -20,6 +20,8 @@
   	
   	<!-- select로 특정 이미지, 제조사, 모델명, 년식, 가격, 배기량, 입력일을 필터링하는 것-->
   	<typeAlias type="kr.co.sist.myCar.CarModelDomain" alias="carMoDomain"/>
+  	<typeAlias type="kr.co.sist.board.BoardDomain" alias="boardDomain"/>
+  	<typeAlias type="kr.co.sist.board.RangeDTO" alias="rangeDTO"/>
   
   	
   </typeAliases>

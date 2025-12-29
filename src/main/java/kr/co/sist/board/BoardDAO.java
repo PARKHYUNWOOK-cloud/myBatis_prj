@@ -36,53 +36,19 @@ public class BoardDAO {
 	public int selectBoardTotalCnt(RangeDTO rDTO) throws SQLException{
 		int totalCnt = 0;
 		
-		/*
-		 * DbConn dbCon = DbConn.getInstance("jdbc/dbcp");
-		 * 
-		 * Connection con=null; PreparedStatement pstmt = null; ResultSet rs= null;
-		 * 
-		 * try {
-		 * 
-		 * //1.JNDI 사용객체 생성 //2. DataSource 얻기 //3. DataSource에서 Connection 얻기
-		 * con=dbCon.getConn();
-		 * 
-		 * //4. 쿼리문 생성객체 얻기
-		 * 
-		 * //검색 키워드가 없다면 모든 글을 총 개수를 검색 StringBuilder selectTotal = new StringBuilder();
-		 * selectTotal .append("select count(*) cnt from board"); //dynamic query: 검색
-		 * 키워드가 있다면 검색 키워드에 해당하는 글의 개수 검색
-		 * 
-		 * if(rDTO.getKeyword()!=null && !rDTO.getKeyword().isEmpty()) {
-		 * selectTotal.append(" where instr(")
-		 * .append(rDTO.getFieldStr()).append(",?) !=0");
-		 * 
-		 * }//end if
-		 * 
-		 * 
-		 * 
-		 * pstmt=con.prepareStatement(selectTotal.toString()); //5. 바인드 변수 값 설정
-		 * 
-		 * if(rDTO.getKeyword()!=null && !rDTO.getKeyword().isEmpty()) {
-		 * 
-		 * pstmt.setString(1,rDTO.getKeyword()); }//end if
-		 * 
-		 * 
-		 * //6. 쿼리문 수행 후 결과 얻기 rs=pstmt.executeQuery();
-		 * 
-		 * if(rs.next()) { totalCnt=rs.getInt("cnt");//아이디가 존재하면 true- 사용불가, 아이디가 없으면
-		 * false - 사용가능
-		 * 
-		 * }//end if
-		 * 
-		 * }finally { //7. 연결 끊기 dbCon.dbClose(rs, pstmt, con); }//end finally
-		 */		
+		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(false);
+		
+		totalCnt=ss.selectOne("kr.co.sist.board.selectBoardTotalCnt",rDTO);
+		
+		if(ss!=null) {ss.close();}//end if 
+		
 		return totalCnt;
 		
 	}//selectBoardTotalCnt
 	
 	
-	   public List<BoardDTO> selectRangeBoard(RangeDTO rDTO) throws SQLException{
-		      List<BoardDTO> list = new ArrayList<BoardDTO>();
+	   public List<BoardDomain> selectRangeBoard(RangeDTO rDTO) throws SQLException{
+		      List<BoardDomain> list = new ArrayList<BoardDomain>();
 		      
 				/*
 				 * DbConn dbCon = DbConn.getInstance("jdbc/dbcp");
@@ -127,7 +93,7 @@ public class BoardDAO {
 		      return list;
 		   }//selectRangeBoard
 	   
-	   public void insertBoard(BoardDTO bDTO) throws PersistenceException{
+	   public void insertBoard(BoardDomain bDTO) throws PersistenceException{
 			//1. MyBatis Handler 얻기
 		   		SqlSession ss = MyBatisHandler.getInstance().getMyBatisHandler(true);
 		   	
@@ -147,8 +113,8 @@ public class BoardDAO {
 	   
 	   
 	   
-	   public BoardDTO selectBoardDetail(int num) throws SQLException{
-		   BoardDTO bDTO = null;
+	   public BoardDomain selectBoardDetail(int num) throws SQLException{
+		   BoardDomain bDTO = null;
 			
 			/*
 			 * DbConn dbCon = DbConn.getInstance("jdbc/dbcp");
@@ -234,7 +200,7 @@ public class BoardDAO {
 		}//updateBoardCnt
 	
 	
-	 public int updateBoard(BoardDTO bDTO) throws SQLException{
+	 public int updateBoard(BoardDomain bDTO) throws SQLException{
 		   	
 		 int cnt=0;
 			/*
@@ -266,7 +232,7 @@ public class BoardDAO {
 		   
 	   }//updateBoard
 	 
-	 public int deleteBoard(BoardDTO bDTO) throws SQLException{
+	 public int deleteBoard(BoardDomain bDTO) throws SQLException{
 		 
 		 int cnt=0;
 			/*

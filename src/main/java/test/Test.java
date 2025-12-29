@@ -12,6 +12,8 @@ import day1224.SelectService;
 import day1226.EmpDomain;
 import day1226.SelectDAO2;
 import day1229.SelectDAO3;
+import kr.co.sist.board.BoardDAO;
+import kr.co.sist.board.RangeDTO;
 import kr.co.sist.car.CarDAO;
 import kr.co.sist.car.CarService;
 
@@ -48,7 +50,8 @@ public class Test {
 //		System.out.println(cs.searchModel("현대"));
 //		 CarDAO cDAO=CarDAO.getInstance();
 		
-		SelectDAO3 sd3= SelectDAO3.getInstance();
+//		SelectDAO3 sd3= SelectDAO3.getInstance();
+		BoardDAO bDAO=BoardDAO.getInstance();
 		try {
 			
 //			assertNotNull(sDAO.useLike("대치동"));
@@ -61,7 +64,11 @@ public class Test {
 //			 assertNotNull(cDAO.selectCar("K5")); 
 //			 assertNotNull(sd3.subQueryNjoin()); 
 //			 assertNotNull(sd3.dollar("cp_emp5")); 
-			 assertNotNull(sd3.dynamicIf(10)); 
+//			 assertNotNull(sd3.dynamicIf(10)); 
+			RangeDTO rDTO  = new RangeDTO();
+			rDTO.setField("1");
+			rDTO.setKeyword("내일은");
+			assertNotNull(bDAO.selectBoardTotalCnt(rDTO)); 
 			
 		}catch (Exception e) {
 			e.printStackTrace();

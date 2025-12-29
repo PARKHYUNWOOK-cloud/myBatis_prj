@@ -18,7 +18,7 @@
                 <SizeBasedTriggeringPolicy size="50MB"/>
                 <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
             </Policies>
-            
+               
 			<DefaultRolloverStrategy max="7" fileIndex="max" >
 		  		<Delete basePath="${LOGS_PATH}" maxDepth = "1">
 		  			<!-- 3일이 경과한 로그파일은 자동 삭제 -->
