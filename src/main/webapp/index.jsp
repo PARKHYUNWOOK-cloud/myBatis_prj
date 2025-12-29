@@ -29,7 +29,7 @@
 
 #wrap{ margin: 0px auto; width:1200px; height:1000px;}
 #left{ width:190px; height:1000px; float: left; }
-#right{  width:980px; height:1000px; float: right;}
+#right{  width:980px; min-height:1000px; float: right;}
 
 #header{ height:150px; /* background-color: #4179C2 */}
 #container{ height:700px; /* background-color: #71B75E */}
@@ -61,7 +61,7 @@ $(function(){
 			<!-- START THE FEATURETTES -->
 			<hr class="featurette-divider">
 			<div class="row featurette">
-				<div>
+				<div >
 					<!-- 뭐든 들어갈거 같은 영역 -->
 					
 					<%
@@ -70,16 +70,18 @@ $(function(){
 							new UrlVO("컬럼하나에 여러행조회","day1224/scmr"),
 							new UrlVO("컬럼여러개에 한행조회","day1224/mcsr"),
 							new UrlVO("컬럼여러개에 여러행조회","day1224/mcmr"),
+							new UrlVO("domain 사용","day1226/domain"),
 							
 							
-							new UrlVO("like",""),
-							new UrlVO("작다의 조회",""),
-							new UrlVO("크다의 조회",""),
-							new UrlVO("subquery",""),
-							new UrlVO("union",""),
-							new UrlVO("join",""),
-							new UrlVO("subquery & join",""),
-							new UrlVO("dynamic query : if",""),
+							new UrlVO("like","day1226/like"),
+							new UrlVO("작다의 조회","day1226/lessThan"),
+							new UrlVO("크다의 조회","day1226/greaterThan"),
+							new UrlVO("subquery","day1226/subquery"),
+							new UrlVO("union","day1226/union"),
+							new UrlVO("join","day1226/join"),
+							new UrlVO("subquery & join","day1229/subqueryNjoin"),
+							new UrlVO("dollar sign","day1229/dollar"),
+							new UrlVO("dynamic query : if","day1229/dynamicIf"),
 							new UrlVO("dynamic query : choose",""),
 							new UrlVO("dynamic query : forEach",""),
 							new UrlVO("dynamic query : set",""),
@@ -122,7 +124,7 @@ $(function(){
 		</div>
 		<!-- /.container -->
 		<!-- FOOTER -->
-		<footer class="container">
+		<footer class="container" style="height: auto;">
 			<c:import url="http://192.168.10.77/mybatis_prj/fragments/footer.jsp"/>
 		</footer>
 	</main>

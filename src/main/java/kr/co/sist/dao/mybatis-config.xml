@@ -6,7 +6,22 @@
 <properties resource="properties/database.properties"></properties>
   <typeAliases>
   	<typeAlias type="day1224.EmpDTO" alias="eDTO"/>
+  	<typeAlias type="day1226.EmpDTO" alias="empDTO"/>
+  	<typeAlias type="day1226.EmpDomain" alias="empDomain"/>
+  	
+  	<!-- 우편번호 검색 결과를 저장할 Domain -->
+  	<typeAlias type="day1226.ZipcodeDomain" alias="zipDomain"/>
+  	<typeAlias type="day1226.EmpAllDomain" alias="eaDomain"/>
+  	
+  	
+  	<!-- 제조사, 모델명, 연식, 가격, 옵션, 배기량, 이미지, 입력일을 저장할 Domain -->
+  	<typeAlias type="day1226.CarModelDomain" alias="cmoDomain"/>
+  	
+  	
+  	<!-- select로 특정 이미지, 제조사, 모델명, 년식, 가격, 배기량, 입력일을 필터링하는 것-->
+  	<typeAlias type="kr.co.sist.myCar.CarModelDomain" alias="carMoDomain"/>
   
+  	
   </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -23,11 +38,15 @@
     <mapper resource="day1219/dept.xml"/><!-- 첫 select 연습  -->
     <mapper resource="day1223/examMapper.xml"/><!-- insert 연습 -->
     <mapper resource="day1224/examMapper2.xml"/><!-- update 연습, delete 연습 -->
-    <mapper resource="day1224/examMapper3.xml"/><!-- 여러가지 select 연습 -->
+    <mapper resource="day1224/examMapper3.xml"/><!-- 여러가지 select 연습1 -->
+    <mapper resource="day1226/examMapper4.xml"/><!-- 여러가지 select 연습2 -->
+    <mapper resource="day1229/examMapper5.xml"/><!-- 여러가지 select 연습3 -->
     
     
     <mapper resource="kr/co/sist/board/boardMapper.xml"/><!-- 게시판 쿼리  -->
+    <mapper resource="kr/co/sist/myCar/carSelect.xml"/><!-- 게시판 쿼리  -->
   
+    <mapper resource="kr/co/sist/car/carMapper.xml"/><!-- 자동차 업무  -->
   
   </mappers>
 </configuration>

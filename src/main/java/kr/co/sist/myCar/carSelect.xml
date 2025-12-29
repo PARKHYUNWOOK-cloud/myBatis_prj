@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.sist.myCar">
+  <select id="country" resultType="String">
+    select distinct country
+	from car_country
+  </select> 
+  
+    <select id="marker" parameterType="String" resultType="String">
+		 select maker
+		 from car_country
+		 where  country=#{country}
+  </select> 
+  
+  <select id="model" parameterType="String" resultType="String">
+			select model
+			from car_maker
+			where maker=#{maker}
+  </select>
+  	 
+
+       	 
+
+  
+  
+</mapper>
